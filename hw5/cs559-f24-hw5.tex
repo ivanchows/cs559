@@ -1,0 +1,178 @@
+\documentclass{exam}
+
+\usepackage{amsmath}
+
+\usepackage{amssymb}
+
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{cite}
+\usepackage{color} 
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage[linewidth=1pt]{mdframed}
+\usepackage{tcolorbox}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\newcommand{\xx}{{\bf{x}}}
+\newcommand{\yy}{{\bf{y}}}
+\newcommand{\ww}{{\bf{w}}}
+
+\pagestyle{headandfoot}
+\runningheadrule
+\firstpageheader{CS559: Machine Learning}{Name:        }{\textcolor{red}{Due: Dec. 5, 2024}}
+
+\title{Assignment 5 KNN, Clustering, and CNN}
+\date{}
+\begin{document}
+\maketitle
+\thispagestyle{headandfoot}
+
+\begin{center}
+  {\fbox{\parbox{5.5in}{\centering
+Homework assignments will be done individually: each student must hand in their own answers. Use of partial or entire solutions obtained from others or online is strictly prohibited. Electronic submission on Canvas is mandatory.}}}
+\end{center}
+\vspace{.5cm}
+\vspace{10pt}
+\noindent{\bf Submission Instructions} 
+You shall submit a zip file named A5\_FirstName\_LastName.zip which contains:
+
+\begin{itemize}
+  \item python files (.ipynb or .py) including all the code, comments, plots, and result analysis. You need to provide detailed comments in English.
+   \item pdf file including explanations and answers for non-coding questions. 
+\end{itemize}
+\vspace{10pt}
+
+\begin{questions}
+
+\question{\bf Nearest Neighbors}\label{q1} (2 points)  Implement a basic k-NN model on the \href{http://archive.ics.uci.edu/ml/datasets/yeast}{yeast} dataset (data is provided as an attachment in Canvas). The task is to predict the compartment in a cell that a yeast protein will localize to based on the properties of its sequence. More details can be found in the dataset description. Apply cross-validation and report your best performance.
+\begin{itemize}
+    \item (1.5 pts) Implementation of k-NN model (do not use packages or tools for this part).
+    \item (0.5 pts) Apply cross-validation and report the best results.
+\end{itemize}
+
+
+\newpage
+\question{\bf Clustering}\label{q1} (1 points)  Suppose we clustered a set of N data points using two different clustering algorithms: k-means and Gaussian mixtures. In both cases we obtained 5 clusters and in both cases the centers of the clusters are exactly the same. Can a few (say 3) points that are assigned to different clusters in the kmeans solution be assigned to the same cluster in the Gaussian mixture solution? If no, explain. If
+so, sketch an example or explain in 1-2 sentences.
+
+\newpage
+\begin{figure}
+\centering
+\subfigure[]{
+\includegraphics[width=0.3\textwidth]{figures/bn-1} 
+ }
+\subfigure[]{
+\includegraphics[width=0.3\textwidth]{figures/bn-2}
+}
+\end{figure}
+\question{\bf Bayesian Networks}\label{q2} (2 points)
+Do the following statements hold in each of the above networks? Please explain your reasoning
+\begin{itemize}
+\item (0.5 pts) $A\bot C | B, D$ in Graph (a)
+\item (0.5 pts) $A\bot C | B, D$ in Graph (b)
+\item (0.5 pts) $B\bot D | A,C$ in Graph (a)
+\item (0.5 pts) $B\bot D | A,C$ in Graph (b)
+\end{itemize}
+
+
+\newpage
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{figures/kmeans-example}
+\caption{Scatter plot of datasets and the initialized centers of 3 clusters}\label{fig:kmeans}
+\end{figure}
+\question{\bf K-means}\label{q3} (6 points)  Given the matrix $X$ whose rows represent different data points, you are asked to perform a k-means clustering on this dataset using the Euclidean distance as the distance function. Here $k$ is chosen as $3$. The Euclidean distance d between a vector $x$ and a vector $y$ both in $\mathcal{R}^d$ is defined as $d(\xx, \yy) = \sqrt{\sum_{i=1}^d (x_i - y_i)^2}$. All data in X were plotted in Figure~\ref{fig:kmeans}. The centers of $3$ clusters were initialized as $\mu_1= (6.2, 3.2) (\text{red}), \mu_2 = (6.6, 3.7) (\text{green)}, \mu_3 = (6.5, 3.0) (\text{blue})$.
+
+\begin{parts}
+\part (4 pts) Implementation of K-means (submit your code).
+\part (0.5 pts)  What’s the center of the first cluster (red) after one iteration? (Answer in the format of $[x_1,x_2]$, round your results to three decimal places)
+\vspace{5em}
+\part (0.5 pts) What’s the center of the second cluster (green) after two iteration?
+\vspace{5em}
+\part (0.5 pts) What’s the center of the third cluster (blue) when the clustering converges?
+\vspace{5em}
+\part (0.5 pts)  How many iterations are required for the clusters to converge?
+\end{parts}
+
+\newpage
+\question{\bf Expectation Maximization (EM)}\label{q4} (5 points)
+In this question you will implement the EM algorithm for Gaussian Mixture Models. A good read on gaussian
+mixture EM can be found at \href{https://www.ics.uci.edu/~smyth/courses/cs274/notes/Notes7_Mixtures_and_EM.pdf}{this link}. A
+sample dataset for this problem can be downloaded in canvas files. For this problem:
+\begin{itemize}
+\item $n$ is the number of training points
+\item $f$ is the number of features
+\item $k$ is the number of gaussians
+\item $X$ is an $n\times f$ matrix of training data
+\item $w$ is an $n\times k$ matrix of membership weights. $w(i, j)$ is the probability that $x_i$ was generated by gaussian $j$
+\item $\pi$ is a $k\times 1$ vector of mixture weights (gaussian prior probabilities). $\pi_i$ is the prior probability that any point belongs to cluster $i$
+\item $\mu$ is a $k\times f$ matrix containing the means of each gaussian
+\item $\Sigma$ is an $ f \times f\times k$ tensor of covariance matrices. $\Sigma(:, :, i)$ is the covariance of gaussian $i$
+\end{itemize}
+
+\begin{parts}
+\part (1 pts) \textbf{Expectation}: 
+Complete the function $[w]$ = Expectation$(X, k, \pi, \mu, \Sigma)$. This function takes in a set of parameters
+of a gaussian mixture model, and outputs the membership weights of each data point
+\part (1 pts) \textbf{Maximization of Means}: 
+Complete the function $[\mu]$ = MaximizeMean$(X, k, w)$. This function takes in the training data along with the membership weights, and calculates the new maximum likelihood mean for each gaussian.
+\part (1 pts) \textbf{Maximization of Covariances}:
+Complete the function $[\Sigma]$ = MaximizeCovariance$(X, k, w, \mu)$. This function takes in the training
+data along with membership weights and means for each gaussian, and calculates the new maximum
+likelihood covariance for each gaussian
+\part (1 pts) \textbf{Maximization of Mixture Weights} :
+Complete the function $[\pi]$ = MaximizeMixtures$(k, w)$. This function takes in the membership weights,
+and calculates the new maximum likelihood mixture weight for each gaussian.
+\part (1 pts) \textbf{EM}:
+Put everything together and implement the function $[\pi, \mu, \Sigma]= \text{EM}(X, k, \pi_0, \mu_0, \Sigma_0$, nIter). This function runs the EM algorithm for nIter steps and returns the parameters of the underlying GMM. Note: Since this code will call your other functions, make sure that they are correct first. A good way to test your EM function offline is to check that the log likelihood, $\log P(X|\pi, \mu,\Sigma)$ is increasing for each iteration of EM.
+\end{parts}
+
+\newpage
+\question{\bf  Convolutional Neural Networks} (4 points)  Develop a Convolutional Neural Network (CNN) model to predict a handwritten digit images into $0$ to $9$ (You can use Keras or other packages).  The pickled file represents a tuple of 3 lists: the training set, the validation set and the testing set. Each of the three lists is a pair formed from a list of images and a list of class labels for each of the images. An image is represented as numpy 1-dimensional array of 784 (28 x 28) float values between $0$ and $1$ ($0$ stands for black, $1$ for white). The labels are numbers between $0$ and $9$ indicating which digit the image represents. The code block below shows how to load the dataset.
+ 
+
+ \begin{lstlisting}
+import pickle, gzip, numpy
+
+# Load the dataset
+f = gzip.open('mnist.pkl.gz', 'rb')
+u = pickle._Unpickler(f)
+u.encoding = 'latin1'
+train_set, valid_set, test_set = u.load()
+f.close()
+\end{lstlisting}
+
+
+\begin{itemize}
+\item (2 pts) Implementation of CNN; Choose the proper activation and loss function.
+\item (1 pts) Plot the train, validation, and test errors as a function of the epochs. Report the best accuracy on the validation and test data sets. Discuss the parameter choices such as the filter size, number of filters etc. Give a brief description of your observations.
+\item (0.5 pts) Apply early stopping using the validation set to avoid overfitting.
+\item (0.5 pts) Does pooling make the model more or less sensitive to small changes in the input images? Why? By small changes, we mean moving the input images to the left or right, rotating them slightly etc.
+\end{itemize}
+
+\end{questions}
+\end{document}
