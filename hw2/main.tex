@@ -20,7 +20,7 @@
 
 \pagestyle{headandfoot}
 \runningheadrule
-\firstpageheader{CS559: Machine Learning}{Name:        }{\textcolor{red}{Due: Oct. 3, 2024}}
+\firstpageheader{CS559: Machine Learning}{Name: Ivan Chow}{\textcolor{red}{Due: Oct. 3, 2024}}
 
 \title{Assignment 2 MLE and MAP (total 20 pts)}
 \date{}
@@ -52,6 +52,20 @@ Homework assignments will be done individually: each student must hand in their 
 Please calculate the solution for $\mu$ and $\sigma^2$ using Maximum Likelihood (ML) estimator.
 
 
+\vspace{2mm}\hrule\vspace{2mm} 
+
+\textbf{Solution.} \\[0.5mm]  
+%%%%%%%%%%%%%%%%%%%% YOUR SOLUTION COMES HERE -- REPLACE WITH YOUR OWN TEXT %%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%  END OF YOUR SOLUTION %%%%%%%%%%%%%%%%%%%%%%%%
+
+\vspace{2mm}\hrule\vspace{2mm}
+
+
 \newpage
 \question{\bf Maximum Likelihood} (5 points) We assume there is a true function $f(\xx)$ and the target value is given by $y=f(x)+\epsilon$ where $\epsilon$ is a Gaussian distribution with mean $0$ and variance $\sigma^2$.
 Thus,
@@ -64,6 +78,18 @@ $$p(\mathbf{y}|\xx,w,\beta) = \prod_{n=1}^N \mathcal{N}(y_n|f(x),\beta^{-1})$$
 
 Please show that maximizing the likelihood function is equivalent to minimizing the sum-of-squares error function.
 
+\vspace{2mm}\hrule\vspace{2mm} 
+
+\textbf{Solution.} \\[0.5mm]  
+%%%%%%%%%%%%%%%%%%%% YOUR SOLUTION COMES HERE -- REPLACE WITH YOUR OWN TEXT %%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%  END OF YOUR SOLUTION %%%%%%%%%%%%%%%%%%%%%%%%
+
+\vspace{2mm}\hrule\vspace{2mm}
 
 \newpage
 \question{\bf  MAP estimator} (5 points) Given input values $\xx= (x_1,...,x_N)^T$ and their corresponding target values $\yy= (y_1,...,y_N)^T$, we estimate the target by using function $f(x,\ww)$ which is a polynomial curve. Assuming the target variables are drawn from Gaussian distribution:
@@ -76,6 +102,18 @@ $$p(\ww|\alpha) = (\frac{\alpha}{2\pi})^{(M+1)/2} \exp(-\frac{\alpha}{2} \ww^T\w
 
 Please prove that maximum posterior (MAP) is equivalent to minimizing the regularized sum-of-squares error function. Note that the posterior distribution of $\ww$ is $p(\ww|\xx,\yy,\alpha,\beta)$. \textbf{Hint: use Bayes' theorem.}
 
+\vspace{2mm}\hrule\vspace{2mm} 
+
+\textbf{Solution.} \\[0.5mm]  
+%%%%%%%%%%%%%%%%%%%% YOUR SOLUTION COMES HERE -- REPLACE WITH YOUR OWN TEXT %%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%  END OF YOUR SOLUTION %%%%%%%%%%%%%%%%%%%%%%%%
+
+\vspace{2mm}\hrule\vspace{2mm}
 
 
 \newpage
@@ -84,7 +122,20 @@ $$f(\xx,\ww) = w_0 + \sum_{i=1}^D w_i x_i$$
 together with a sum-of-squares error/loss function of the form:
 $$L_D(\ww) = \frac{1}{2} \sum_{n=1}^N \{f(\xx_n,\ww) - y_n\}^2$$
 Now suppose that Gaussian noise $\epsilon_i$ with zero mean and variance $\sigma^2$ is added independently to each of the input variables $x_i$. By making use of $\mathbb{E}[\epsilon_i]=0$ and $\mathbb{E}[\epsilon_i\epsilon_j]=\delta_{ij} \sigma^2$ where $\delta_{ii}=1$, show that minimizing $L_D$ averaged over the noise distribution is equivalent to minimizing the sum-of-squares error
-for noise-free input variables with the addition of a weight-decay regularization term, in which the bias parameter $w_0$ is omitted from the regularizer.
+for noise-free input variables with the addition of a weight-decay regularization term, in which the bias parameter $w_0$ is omitted from the regularize.
+
+\vspace{2mm}\hrule\vspace{2mm} 
+
+\textbf{Solution.} \\[0.5mm]  
+%%%%%%%%%%%%%%%%%%%% YOUR SOLUTION COMES HERE -- REPLACE WITH YOUR OWN TEXT %%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%  END OF YOUR SOLUTION %%%%%%%%%%%%%%%%%%%%%%%%
+
+\vspace{2mm}\hrule\vspace{2mm}
 
 
  
